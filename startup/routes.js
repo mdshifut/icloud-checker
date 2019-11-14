@@ -1,9 +1,9 @@
 const error = require("../middleware/error");
 const notFound = require("../middleware/notFound");
-const checkRoute = require("../routes/checkRoute");
+const verifyRoute = require("../routes/verifyRoute");
 
 module.exports = app => {
-  app.use("/verify", checkRoute);
+  app.use("/verify", verifyRoute);
 
   app.use(notFound);
   app.use(error);

@@ -1,4 +1,4 @@
-const config = require("config");
+// const config = require("config");
 
 module.exports = () => {
   // if (!config.get("JWT_SECRET_KEY"))
