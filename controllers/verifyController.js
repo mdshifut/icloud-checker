@@ -34,17 +34,11 @@ exports.verifyGoogleId = async (req, res) => {
     }
   );
 
-  if (data.input01 && data.input01.Valid !== "false") {
-    return res.json({
-      isExist: false,
-      message: `${googleId} doesn't exist on Google`
-    });
-  }
-
+  // If Google id exist
   if (
     data.input01 &&
     data.input01.Valid === "false" &&
-    data.input01.Errors.GmailAddress
+    data.input01.Errors.GmailAddress === "That username is taken. Try another."
   ) {
     return res.json({
       isExist: true,
@@ -52,5 +46,14 @@ exports.verifyGoogleId = async (req, res) => {
     });
   }
 
+  // If Google id doesn't exist
+  if (data.input01 && data.input01.Valid) {
+    return res.json({
+      isExist: false,
+      message: `${googleId} doesn't exist on Google`
+    });
+  }
+
+  // If request limit out
   return res.json({ message: `Oh sorry request limit end` });
 };
