@@ -1,5 +1,5 @@
 {
   "DB": "mongodb://localhost:27017/webconsult-api",
   "JWT_SECRET_KEY": "",
-  "SERVICE_NAME": "webconsult-api"
+  "SERVICE_NAME": "idchecker-api"
 }
