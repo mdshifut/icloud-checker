@@ -2,23 +2,28 @@ const axios = require("axios");
 
 exports.verifyICloudId = async (req, res) => {
   const { appleId } = req.params;
+  try {
+    const { data } = await axios.post(
+      "https://iforgot.apple.com/password/verify/appleid",
+      {
+        id: appleId
+      }
+    );
 
-  const { data } = await axios.post(
-    "https://iforgot.apple.com/password/verify/appleid",
-    {
-      id: appleId
-    }
-  );
+    console.log("Node env", process.env.NODE_ENV);
+    console.log(data);
+    if (data.name === appleId)
+      return res.json({
+        isExist: false,
+        message: `${appleId} doesn't exist on iCloud`
+      });
 
-  console.log("Node env", process.env.NODE_ENV);
-  console.log(data);
-  if (data.name === appleId)
-    return res.json({
-      isExist: false,
-      message: `${appleId} doesn't exist on iCloud`
-    });
-
-  return res.json({ isExist: true, message: `${appleId} exist on iCloud` });
+    return res.json({ isExist: true, message: `${appleId} exist on iCloud` });
+  } catch (error) {
+    console.log("Node env", process.env.NODE_ENV);
+    console.log(error);
+    return false;
+  }
 };
 
 exports.verifyGoogleId = async (req, res) => {
