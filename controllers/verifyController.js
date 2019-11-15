@@ -10,7 +10,6 @@ exports.verifyICloudId = async (req, res) => {
     }
   );
 
-  console.log(data);
   if (data.name === appleId)
     return res.json({
       isExist: false,
@@ -34,8 +33,6 @@ exports.verifyGoogleId = async (req, res) => {
       }
     }
   );
-
-  console.log(data);
 
   // If Google id exist
   if (
