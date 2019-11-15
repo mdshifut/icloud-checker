@@ -10,11 +10,13 @@ exports.verifyICloudId = async (req, res) => {
       id: appleId
     },
     {
-      Host: "iforgot.apple.com",
-      Origin: "https://iforgot.apple.com",
-      Referer: " https://iforgot.apple.com/password/verify/appleid",
-      "Sec-Fetch-Mode": " cors",
-      "Sec-Fetch-Site": "same-origin"
+      headers: {
+        Host: "iforgot.apple.com",
+        Origin: "https://iforgot.apple.com",
+        Referer: " https://iforgot.apple.com/password/verify/appleid",
+        "Sec-Fetch-Mode": " cors",
+        "Sec-Fetch-Site": "same-origin"
+      }
     }
   );
 
