@@ -10,6 +10,7 @@ exports.verifyICloudId = async (req, res) => {
     }
   );
 
+  console.log("Node env", process.env.NODE_ENV);
   console.log(data);
   if (data.name === appleId)
     return res.json({
