@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 
 const app = express();
-const logger = require("./logger/logger");
+// const logger = require("./logger/logger");
 
 require("./startup/config")();
 require("./startup/db")();
